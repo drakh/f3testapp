@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <script src="js/mootools_core.js"></script>
+        <script>
+        var App={
+        	init:function()
+        	{
+        		this.default_language='en';
+        		var r=new Request.JSON({
+        			url:'./admin/ajax/get_languages',
+        			onComplete:this.build_languages.bind(this),
+        			data:{o:'{test:"data"}'}
+        		}).post();
+        	},
+        	build_languages:function(o)
+        	{
+        		console.log(o);
+        	}
+        };
+        window.addEvent('domready',App.init.bind(App));
+        </script>
+    </head>
+    <body>
+    <h1>test app</h1>
+    </body>
+</html>
