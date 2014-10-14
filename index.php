@@ -1,7 +1,4 @@
 <?php
-$items='{"1":{"title":"Lorem ipsum"},"2":{"title":"Lorem ipsum"},"3":{"title":"Lorem ipsum"},"4":{"title":"Lorem ipsum"},"5":{"title":"Lorem ipsum"},"6":{"title":"Lorem ipsum"},"7":{"title":"Lorem ipsum"},"8":{"title":"Lorem ipsum"},"9":{"title":"Lorem ipsum"},"10":{"title":"Lorem ipsum"}} ';
-$tree='[{"i_id":1,"childs":[{"i_id":2,"childs":[{"i_id":5,"childs":[{"i_id":6,"childs":[]},{"i_id":7,"childs":[]}]}]},{"i_id":3,"childs":[{"i_id":4,"childs":[]}]}]},{"i_id":10,"childs":[]}] ';
-
 $f3=require('../lib/base.php');
 $f3->set('DEBUG',1);
 $f3->set('UI','app/');
@@ -52,12 +49,12 @@ class Admin extends App{
 	}
 	function draw_tree_element($list,$id,$childs)
 	{
-				$subtree='';
-				if(count($childs)>0)
-				{
-					$subtree=$this->draw_tree($childs,$list);
-				}
-				return $this->render_template('fragments/tree_element.html', array('id'=>$id,'title'=>$list[$id]['title'],'subtree'=>$subtree));
+		$subtree='';
+		if(count($childs)>0)
+		{
+			$subtree=$this->draw_tree($childs,$list);
+		}
+		return $this->render_template('fragments/tree_element.html', array('id'=>$id,'title'=>$list[$id]['title'],'subtree'=>$subtree));
 	}
 	function get_setup($f3,$params)
 	{
@@ -66,9 +63,7 @@ class Admin extends App{
 	function get_languages($f3,$params)
 	{
 		$languages=\ISO::instance()->languages();
-		//$data=$f3->get('POST');
 		$this->json_output($languages);
-		//$this->json_output($data);
 	}
 	function get_list($f3, $params)
 	{
